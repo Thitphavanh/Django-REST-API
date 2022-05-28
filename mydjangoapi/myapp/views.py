@@ -15,6 +15,8 @@ def all_product(request):
 	return Response(serializer.data, status=status.HTTP_200_OK)
 
 
+
+
 data = [
 	{
 		'detail': 'New jersey 2022/2023',
