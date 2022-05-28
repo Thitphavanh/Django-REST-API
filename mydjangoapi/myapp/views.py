@@ -17,82 +17,95 @@ def all_product(request):
 
 
 
+#POST Data (save data to database)
+@api_view(['POST'])
+def post_product(request):
+	if request.method == 'POST':
+		serializer = ProductSerializer(data=request.data)
+		if serializer.is_valid():
+			serializer.save()
+			return Response(serializer.data, status=status.HTTP_201_CREATED)
+		return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
+
+			
+		
+
 data = [
 	{
 		'detail': 'New jersey 2022/2023',
 		'name': 'Liverpool FC',
-		'pathImages': 'https://raw.githubusercontent.com/Thitphavanh/Flutter-API/main/Liverpool.jpg',
+		'imagePath': 'https://raw.githubusercontent.com/Thitphavanh/Flutter-API/main/Liverpool.jpg',
 		'size': 'M',
-		'stock': '100',
+		'quantity': '100',
 		'price': '250000'
 	},
 
 	{
 		'detail': 'New jersey 2022/2023',
 		'name': 'Liverpool FC',
-		'pathImages': 'https://raw.githubusercontent.com/Thitphavanh/Flutter-API/main/Liverpool.jpg',
+		'imagePath': 'https://raw.githubusercontent.com/Thitphavanh/Flutter-API/main/Liverpool.jpg',
 		'size': 'L',
-		'stock': '150',
+		'quantity': '150',
 		'price': '250000'
 	},
 	{
 		'detail': 'New jersey 2022/2023',
 		'name': 'Liverpool FC',
-		'pathImages': 'https://raw.githubusercontent.com/Thitphavanh/Flutter-API/main/Liverpool.jpg',
+		'imagePath': 'https://raw.githubusercontent.com/Thitphavanh/Flutter-API/main/Liverpool.jpg',
 		'size': 'XL',
-		'stock': '100',
+		'quantity': '100',
 		'price': '250000'
 	},
 	{
 		'detail': 'New jersey 2022/2023',
 		'name': 'Liverpool FC',
-		'pathImages': 'https://raw.githubusercontent.com/Thitphavanh/Flutter-API/main/Liverpool.jpg',
+		'imagePath': 'https://raw.githubusercontent.com/Thitphavanh/Flutter-API/main/Liverpool.jpg',
 		'size': 'XXL',
-		'stock': '80',
+		'quantity': '80',
 		'price': '250000'
 	},
 
 	{
 		'detail': 'New jersey 2022/2023',
 		'name': 'Manchester United FC',
-		'pathImages': 'https://raw.githubusercontent.com/Thitphavanh/Flutter-API/main/man-united.jpg',
+		'imagePath': 'https://raw.githubusercontent.com/Thitphavanh/Flutter-API/main/man-united.jpg',
 		'size': 'M',
-		'stock': '100',
+		'quantity': '100',
 		'price': '290000'
 	},
 
 	{
 		'detail': 'New jersey 2022/2023',
 		'name': 'Manchester United FC',
-		'pathImages': 'https://raw.githubusercontent.com/Thitphavanh/Flutter-API/main/man-united.jpg',
+		'imagePath': 'https://raw.githubusercontent.com/Thitphavanh/Flutter-API/main/man-united.jpg',
 		'size': 'L',
-		'stock': '100',
+		'quantity': '100',
 		'price': '290000'
 	},
 
 	{
 		'detail': 'New jersey 2022/2023',
 		'name': 'Manchester United FC',
-		'pathImages': 'https://raw.githubusercontent.com/Thitphavanh/Flutter-API/main/man-united.jpg',
+		'imagePath': 'https://raw.githubusercontent.com/Thitphavanh/Flutter-API/main/man-united.jpg',
 		'size': 'XL',
-		'stock': '100',
+		'quantity': '100',
 		'price': '290000'
 	},
 
 	{
 		'detail': 'New jersey 2022/2023',
 		'name': 'Manchester United FC',
-		'pathImages': 'https://raw.githubusercontent.com/Thitphavanh/Flutter-API/main/man-united.jpg',
+		'imagePath': 'https://raw.githubusercontent.com/Thitphavanh/Flutter-API/main/man-united.jpg',
 		'size': 'XL',
-		'stock': '100',
+		'quantity': '100',
 		'price': '290000'
 	},
 	{
 		'detail': 'New jersey 2022/2023',
 		'name': 'Manchester United FC',
-		'pathImages': 'https://raw.githubusercontent.com/Thitphavanh/Flutter-API/main/man-united.jpg',
+		'imagePath': 'https://raw.githubusercontent.com/Thitphavanh/Flutter-API/main/man-united.jpg',
 		'size': 'XXL',
-		'stock': '100',
+		'quantity': '100',
 		'price': '290000'
 	}
 ]
