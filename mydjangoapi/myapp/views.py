@@ -28,7 +28,19 @@ def post_product(request):
 		return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
 
 			
-		
+
+@api_view(['PUT'])
+def update_product(request, TID):
+	product = Product.objects.get(id=TID)
+	if request.method == "PUT":
+		data = {}
+		serializer = ProductSerializer(product, data=request.data)
+		if serializer.is_valid():
+			serializer.save()
+			data['status'] = 'updated'
+			return Response(data=data, status=status.HTTP_201_CREATED)
+		return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
+
 
 data = [
 	{

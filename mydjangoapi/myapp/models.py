@@ -8,6 +8,7 @@ class Product(models.Model):
 	quantity = models.IntegerField(default=1)
 	imagePath = models.ImageField(upload_to="medias", null=True, blank=True)
 
+
 	def __str__(self):
 		return self.name
 
