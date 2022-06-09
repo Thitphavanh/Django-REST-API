@@ -15,9 +15,7 @@ def all_product(request):
 	return Response(serializer.data, status=status.HTTP_200_OK)
 
 
-
-
-#POST Data (save data to database)
+# POST Data (save data to database)
 @api_view(['POST'])
 def post_product(request):
 	if request.method == 'POST':
@@ -27,7 +25,6 @@ def post_product(request):
 			return Response(serializer.data, status=status.HTTP_201_CREATED)
 		return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
 
-			
 
 @api_view(['PUT'])
 def update_product(request, TID):
@@ -40,6 +37,21 @@ def update_product(request, TID):
 			data['status'] = 'updated'
 			return Response(data=data, status=status.HTTP_201_CREATED)
 		return Response(serializer.errors, status=status.HTTP_404_NOT_FOUND)
+
+
+@api_view(['DELETE'])
+def delete_product(request, TID):
+	product = Product.objects.get(id=TID)
+	if request.method == 'DELETE':
+		delete = product.delete()
+		data = {}
+		if delete:
+			data['status'] = 'delete'
+			status = status.HTTP_200_OK
+		else:
+			data['status'] = 'failed'
+			status = status.HTTP_400_BAD_REQUEST
+		return Response(data=data, status=status)
 
 
 data = [
