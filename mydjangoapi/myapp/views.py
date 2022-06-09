@@ -47,11 +47,11 @@ def delete_product(request, TID):
 		data = {}
 		if delete:
 			data['status'] = 'delete'
-			status = status.HTTP_200_OK
+			statuscode = status.HTTP_200_OK
 		else:
 			data['status'] = 'failed'
-			status = status.HTTP_400_BAD_REQUEST
-		return Response(data=data, status=status)
+			statuscode = status.HTTP_400_BAD_REQUEST
+		return Response(data=data, status=statuscode)
 
 
 data = [
